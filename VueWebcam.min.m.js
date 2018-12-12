@@ -1,5 +1,4 @@
-import Vue from 'vue';
-
+var Vue = require('vue').default;
 var WebcamComponent = Vue.extend({
     render: function (h) {
         return h('video', {
@@ -75,7 +74,7 @@ var WebcamComponent = Vue.extend({
         var this$1 = this;
 
         this.video = this.$refs.video;
-        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || (navigator.mediaDevices ? navigator.mediaDevices.getUserMedia : null) || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
         if (navigator.getUserMedia) {
             navigator.getUserMedia({
                 video: true
